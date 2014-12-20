@@ -1,7 +1,7 @@
 %Classic Discrete Logistic: Red% 
 N(1,t) = N(1,t-1)+R*N(1,t-1)*(1-N(1,t-1)/K)
 %Ricker: Green%
-N(1,t) = N(1,t-1)^(R*(1-N(1,t-1)/K))
+N(1,t) = N(1,t-1)*exp(R*(1-N(1,t-1)/K))
 %Beverton-Holt: Green%
 N(1,t) = ((R+1)*N(1,t-1))/(1+(R/K)*N(1,t-1))
 
