@@ -1,0 +1,35 @@
+%Classic Discrete Logistic: Red% 
+N(1,t) = N(1,t-1)+R*N(1,t-1)*(1-N(1,t-1)/K)
+%Ricker: Green%
+N(1,t) = N(1,t-1)^(R*(1-N(1,t-1)/K))
+%Beverton-Holt: Green%
+N(1,t) = ((R+1)*N(1,t-1))/(1+(R/K)*N(1,t-1))
+
+% this program simulates the geometric growth model
+
+
+% give paramter values:
+R = 2;
+K = 25;
+
+% set the initial ptopulation size
+initN = 2;
+
+% tell it how long to simulate the model
+steps = 50;
+% create a vector to store the population sizes in (initially, all elements
+% in the vector will equal 0)
+N = zeros(1,steps);
+N(1,1) = initN; % put the initial popualtion size into the first element
+
+% fill in the rest of the N values one time-step at a time:
+for t = 2:steps
+ N(1,t) = ((R+1)*N(1,t-1))/(1+(R/K)*N(1,t-1)) 
+ end
+
+% plot the results
+figure(1)
+plot(1:steps,N,'b-','LineWidth',2)
+hold on
+xlabel('Time')
+ylabel('Population size')
